@@ -83,16 +83,7 @@ html,
 body {
   max-width: 100vw;
   overflow-x: hidden;
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  scroll-behaviour: smooth;
 }
 
 a {
@@ -102,6 +93,45 @@ a {
 
 @media (prefers-color-scheme: dark) {
   html {
-    color-scheme: dark;
+    color-scheme: white;
   }
+}
+
+.site-layout-content {
+  height: 85vh;
+  padding: 24px;
+}
+.chat-bot-icon{
+  width: 30px;
+  margin-right: 10px;
+}
+.ant-typography{
+  margin: 0 !important;
+}
+.content-chat{
+  margin: 15px 0;
+  overflow-y: scroll;
+  height: 68vh;
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.input-chat{
+  height: 40px;
+}
+
+.bubble-wrapper{
+  margin-top: 15px;
+}
+
+.bubble-chat{
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.answer-bubble{
+  background-color: #18b68b;
+  color: white;
+}
+.question-bubble{
+  background-color: white;
 }

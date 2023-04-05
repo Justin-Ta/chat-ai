@@ -1,20 +1,24 @@
 import { CustomBreadcrumb } from "@/components/layout/custom-breadcrumb";
-import { Avatar, Col, Input, Row, Typography } from "antd";
+import { Input, Row, Typography } from "antd";
 import React, { useState } from "react";
-import { SendOutlined, UserOutlined } from "@ant-design/icons";
+import { SendOutlined } from "@ant-design/icons";
+import { IMessageProp, RESPONSE_TYPE } from "@/constant/common";
+import BubbleChat from "@/components/bubble-chat";
+import { getCurrentDate } from "@/util/common";
 const { Search } = Input;
 const { Title } = Typography;
 
-interface IMessageProp {
-  data: string;
-  type: number;
-}
-const enum RESPONSE_TYPE {
-  QUESTION = 1,
-  ANSWER = 2,
-}
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const onChange = (value: any) => setSearchTerm(value.target.value);
+  const [messageData, setMessageData] = useState<IMessageProp[]>([
+    {
+      data: "Hello, May I help you?",
+      type: RESPONSE_TYPE.ANSWER,
+      createdTime: getCurrentDate(),
+    },
+  ]);
+
   const onSearch = (value: string) => {
     setSearchTerm(""),
       setMessageData([
@@ -22,14 +26,11 @@ export default function Home() {
         {
           data: value,
           type: RESPONSE_TYPE.QUESTION,
+          createdTime: getCurrentDate(),
         },
       ]);
   };
-  const onChange = (value: any) => setSearchTerm(value.target.value);
 
-  const [messageData, setMessageData] = useState<IMessageProp[]>([
-    { data: "Hello, May I help you?", type: RESPONSE_TYPE.ANSWER },
-  ]);
   return (
     <>
       <CustomBreadcrumb breadItems={["BnK AI"]} />
@@ -39,43 +40,8 @@ export default function Home() {
           <Title level={4}>BnK AI</Title>
         </Row>
         <div className="content-chat">
-          {messageData?.map((item: IMessageProp) => {
-            return (
-              <Row
-                className="bubble-wrapper"
-                justify={item.type === RESPONSE_TYPE.ANSWER ? "start" : "end"}
-              >
-                <Col span={12}>
-                  <Row justify="space-between" gutter={12}>
-                    {item.type === RESPONSE_TYPE.ANSWER && (
-                      <Col span={2}>
-                        <Avatar
-                          src={<img src="./favicon.png" alt="avatar" />}
-                        />
-                      </Col>
-                    )}
-                    <Col
-                      span={22}
-                      className={`${
-                        item.type === RESPONSE_TYPE.ANSWER
-                          ? "answer-bubble"
-                          : "question-bubble"
-                      } bubble-chat`}
-                    >
-                      {item.data}
-                    </Col>
-                    {item.type === RESPONSE_TYPE.QUESTION && (
-                      <Col span={2}>
-                        <Avatar
-                          style={{ backgroundColor: "#87d068" }}
-                          icon={<UserOutlined />}
-                        />
-                      </Col>
-                    )}
-                  </Row>
-                </Col>
-              </Row>
-            );
+          {messageData?.map((item: IMessageProp, index: number) => {
+            return <BubbleChat dataChat={item} key={index} />;
           })}
         </div>
         <Search

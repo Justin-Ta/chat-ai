@@ -128,8 +128,10 @@ a {
 
 .bubble-chat{
   border-radius: 8px;
+  max-width: max-content;
   padding: 10px;
   font-size: 14px;
+  text-align: justify;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 

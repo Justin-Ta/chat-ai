@@ -19,15 +19,16 @@ export default function BubbleChat({ dataChat }: IProp) {
               <Avatar src={<img src="./favicon.png" alt="avatar" />} />
             </Col>
           )}
-          <Col
-            span={22}
-            className={`${
-              dataChat.type === RESPONSE_TYPE.ANSWER
-                ? "answer-bubble"
-                : "question-bubble"
-            } bubble-chat`}
-          >
-            {dataChat.data}
+          <Col span={22}>
+            <div
+              className={`${
+                dataChat.type === RESPONSE_TYPE.ANSWER
+                  ? "answer-bubble"
+                  : "question-bubble"
+              } bubble-chat`}
+            >
+              {dataChat.data}
+            </div>
           </Col>
           {dataChat.type === RESPONSE_TYPE.QUESTION && (
             <Col span={2}>

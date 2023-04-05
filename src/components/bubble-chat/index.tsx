@@ -13,9 +13,9 @@ export default function BubbleChat({ dataChat }: IProp) {
       justify={dataChat.type === RESPONSE_TYPE.ANSWER ? "start" : "end"}
     >
       <Col span={13}>
-        <Row justify="space-between" gutter={12}>
+        <Row>
           {dataChat.type === RESPONSE_TYPE.ANSWER && (
-            <Col span={2}>
+            <Col span={2} className="avatar-bubble-chat">
               <Avatar src={<img src="./favicon.png" alt="avatar" />} />
             </Col>
           )}
@@ -31,11 +31,13 @@ export default function BubbleChat({ dataChat }: IProp) {
             </div>
           </Col>
           {dataChat.type === RESPONSE_TYPE.QUESTION && (
-            <Col span={2}>
-              <Avatar
-                style={{ backgroundColor: "#87d068" }}
-                icon={<UserOutlined />}
-              />
+            <Col span={2} className="avatar-bubble-chat">
+              <div className="avatar-right">
+                <Avatar
+                  style={{ backgroundColor: "#87d068" }}
+                  icon={<UserOutlined />}
+                />
+              </div>
             </Col>
           )}
         </Row>

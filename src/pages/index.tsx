@@ -5,11 +5,14 @@ import { SendOutlined } from "@ant-design/icons";
 import { IMessageProp, RESPONSE_TYPE } from "@/constant/common";
 import BubbleChat from "@/components/bubble-chat";
 import { getCurrentDate } from "@/util/common";
+import { LoadingBubble } from "@/components/text-animation/loading";
+
 const { Search } = Input;
 const { Title } = Typography;
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState<string>("");
+  const [isLoading] = useState(true);
   const onChange = (value: any) => setSearchTerm(value.target.value);
   const [messageData, setMessageData] = useState<IMessageProp[]>([
     {
@@ -33,7 +36,7 @@ export default function Home() {
 
   return (
     <>
-      <CustomBreadcrumb breadItems={["BnK AI"]} />
+      <CustomBreadcrumb breadItems={["BnK AI", "Chat GPT"]} />
       <div className="site-layout-content" style={{ background: "white" }}>
         <Row align="middle">
           <img className="chat-bot-icon" src="./favicon.png" />
@@ -43,6 +46,7 @@ export default function Home() {
           {messageData?.map((item: IMessageProp, index: number) => {
             return <BubbleChat dataChat={item} key={index} />;
           })}
+          {isLoading && <LoadingBubble />}
         </div>
         <Search
           value={searchTerm}
@@ -50,6 +54,7 @@ export default function Home() {
           placeholder="Aa"
           onChange={(e) => onChange(e)}
           onSearch={onSearch}
+          autoComplete="none"
           enterButton={<SendOutlined />}
         />
       </div>

@@ -8,3 +8,7 @@ export interface IMessageProp {
   type: number;
   createdTime: string;
 }
+
+export enum ROUTE {
+  CHANNEL = "/channel",
+}

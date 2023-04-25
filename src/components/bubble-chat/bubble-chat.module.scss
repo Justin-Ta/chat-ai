@@ -1,0 +1,101 @@
+@import "../../sass/_variable";
+
+.bubbleWrapper {
+    margin-top: 15px;
+    overflow-x: hidden;
+    .answerBubble {
+        background: $primary-color;
+        background: linear-gradient(90deg, hsl(188, 89%, 36%) 0%, rgb(40, 219, 179) 100%);
+        color: $primary-color-light;
+    }
+    .questionBubble {
+        background-color: $primary-color-light;
+        float: right;
+    }
+    .bubbleChat {
+        border-radius: 8px;
+        max-width: max-content;
+        padding: 10px;
+        font-size: 14px;
+        text-align: justify;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    }
+    .avatarRight {
+        float: right;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .avatarBubbleChat {
+        display: none;
+    }
+}
+
+.typedOut {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 3s ease-in-out infinite;
+    width: 0;
+}
+
+.waveTextAnimated {
+    text-align: center;
+    span {
+        display: inline-block;
+        -webkit-animation: wave-text 1s ease-in-out infinite;
+        animation: wave-text 1s ease-in-out infinite;
+        &:nth-of-type(1) {
+            -webkit-animation-delay: 0s;
+            animation-delay: 0s;
+        }
+        &:nth-of-type(2) {
+            -webkit-animation-delay: 0.1s;
+            animation-delay: 0.1s;
+        }
+        &:nth-of-type(3) {
+            -webkit-animation-delay: 0.2s;
+            animation-delay: 0.2s;
+        }
+    }
+    .dot {
+        height: 6px;
+        width: 6px;
+        margin: 0 2px;
+        background-color: $primary-color-light;
+        border-radius: 50%;
+        display: inline-block;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@-webkit-keyframes wave-text {
+    00% {
+        transform: translateY(0em);
+    }
+    60% {
+        transform: translateY(-0.6em);
+    }
+    100% {
+        transform: translateY(0em);
+    }
+}
+
+@keyframes wave-text {
+    00% {
+        transform: translateY(0em);
+    }
+    60% {
+        transform: translateY(-0.6em);
+    }
+    100% {
+        transform: translateY(0em);
+    }
+}

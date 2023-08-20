@@ -1,0 +1,43 @@
+@import "../../sass/_variable";
+
+.footerModal {
+    margin-top: 24px;
+    .ant-form-item {
+        margin-bottom: 0 !important;
+    }
+}
+
+.imgDoctor {
+    border-radius: 8px;
+    box-shadow:
+        0 4px 8px 0 rgba(0, 0, 0, 0.2),
+        0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.customModal {
+    .buttonCustom {
+        font-weight: 500 !important;
+        background-color: $primary-color !important;
+        color: white !important;
+        height: 2.5rem !important;
+        border-radius: 0.8rem !important;
+        border: 0px !important;
+    }
+    .submitBtn {
+        color: white !important;
+        height: 2.5rem !important;
+        border-radius: 8px !important;
+        font-weight: 500 !important;
+    }
+    .cancelBtn {
+        color: $primary-color !important;
+        height: 2.5rem !important;
+        border-radius: 8px !important;
+        border: 2px solid $primary-color !important;
+        font-weight: 500 !important;
+        &:hover,
+        &:focus {
+            border: 2px solid $primary-color !important;
+        }
+    }
+}

@@ -4,7 +4,7 @@ import FileUploadPage from "@/components/modal";
 import { Button } from "antd";
 import React, { useState } from "react";
 
-export default function index() {
+export default function UploadFile() {
   const [isShowModal, setIsShowModal] = useState(false);
   const handleShowModal = (isShow: boolean) => {
     setIsShowModal(isShow);
